@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { PRODUCTS } from "../../../lib/constants";
 import ProductPageContent from "./ProductPageContent";
 
-export const runtime = 'edge';
-
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

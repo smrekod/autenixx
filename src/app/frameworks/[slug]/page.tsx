@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { FRAMEWORKS } from "../../../lib/constants";
 import FrameworkPageContent from "./FrameworkPageContent";
 
-export const runtime = 'edge';
-
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
