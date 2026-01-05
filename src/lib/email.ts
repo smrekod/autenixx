@@ -25,26 +25,31 @@ export interface ContactFormData {
 function isCloudflareWorkers() {
   // Check for Cloudflare-specific globals
   try {
-    return typeof globalThis !== 'undefined' && 
-           (globalThis.caches !== undefined || 
-            typeof globalThis.navigator === 'undefined' ||
-            process.env.CF_PAGES === "1" ||
-            process.env.CF_PAGES_BRANCH);
+    return (
+      typeof globalThis !== "undefined" &&
+      (globalThis.caches !== undefined ||
+        typeof globalThis.navigator === "undefined" ||
+        process.env.CF_PAGES === "1" ||
+        process.env.CF_PAGES_BRANCH)
+    );
   } catch {
     return false;
   }
 }
 
 // Unified email sending function that works with both nodemailer and worker-mailer
-async function sendEmail(mailer: any, options: {
-  from: { name: string; email: string };
-  to: { email: string };
-  subject: string;
-  html: string;
-  reply?: { email: string };
-}) {
+async function sendEmail(
+  mailer: any,
+  options: {
+    from: { name: string; email: string };
+    to: { email: string };
+    subject: string;
+    html: string;
+    reply?: { email: string };
+  }
+) {
   const isCloudflare = isCloudflareWorkers();
-  
+
   if (isCloudflare) {
     // worker-mailer API
     return await mailer.send({
@@ -71,9 +76,9 @@ async function getMailer() {
   if (process.env.EMAIL_ENABLED !== "true") {
     return null;
   }
-  
+
   const isCloudflare = isCloudflareWorkers();
-  
+
   // Use worker-mailer in Cloudflare Workers
   if (isCloudflare) {
     if (!WorkerMailer) {
@@ -85,7 +90,7 @@ async function getMailer() {
         return null;
       }
     }
-    
+
     return await WorkerMailer.connect({
       host: process.env.SMTP_HOST || "smtp.gmail.com",
       port: parseInt(process.env.SMTP_PORT || "587"),
@@ -97,7 +102,7 @@ async function getMailer() {
       authType: "plain",
     });
   }
-  
+
   // Use nodemailer for local development
   if (!nodemailer) {
     try {
@@ -107,7 +112,7 @@ async function getMailer() {
       return null;
     }
   }
-  
+
   return nodemailer.default.createTransport({
     host: process.env.SMTP_HOST || "smtp.gmail.com",
     port: parseInt(process.env.SMTP_PORT || "587"),
@@ -273,7 +278,7 @@ export async function sendDemoRequestEmail(data: DemoRequestData) {
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="https://autenix.com" style="display: inline-block; background: linear-gradient(135deg, #0066FF 0%, #0052cc 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 14px;">Visit Our Website</a>
+                    <a href="https://autenix.co" style="display: inline-block; background: linear-gradient(135deg, #0066FF 0%, #0052cc 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 14px;">Visit Our Website</a>
                   </td>
                 </tr>
               </table>
@@ -282,9 +287,9 @@ export async function sendDemoRequestEmail(data: DemoRequestData) {
           <tr>
             <td style="background-color: #fafafa; padding: 24px 32px; text-align: center; border-top: 1px solid #e4e4e7;">
               <p style="margin: 0 0 8px 0; color: #71717a; font-size: 13px;">Questions? Contact us at <a href="mailto:${
-                process.env.SUPPORT_EMAIL || "support@autenix.com"
+                process.env.SUPPORT_EMAIL || "support@autenix.co"
               }" style="color: #0066FF; text-decoration: none;">${
-    process.env.SUPPORT_EMAIL || "support@autenix.com"
+    process.env.SUPPORT_EMAIL || "support@autenix.co"
   }</a></p>
               <p style="margin: 0; color: #a1a1aa; font-size: 12px;">© ${new Date().getFullYear()} Autenix. All rights reserved.</p>
             </td>
@@ -301,23 +306,24 @@ export async function sendDemoRequestEmail(data: DemoRequestData) {
     throw new Error("Email mailer not available");
   }
 
-  const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER || "noreply@autenix.com";
+  const fromEmail =
+    process.env.FROM_EMAIL || process.env.SMTP_USER || "noreply@autenix.co";
   const fromName = process.env.FROM_NAME || "Autenix Security";
 
   const isCloudflare = isCloudflareWorkers();
-  
+
   // Send internal notification email
   const internalEmail = isCloudflare
     ? await mailer.send({
         from: { name: fromName, email: fromEmail },
-        to: { email: process.env.SUPPORT_EMAIL || "support@autenix.com" },
+        to: { email: process.env.SUPPORT_EMAIL || "support@autenix.co" },
         subject: `New Demo Request: ${data.firstName} ${data.lastName} from ${data.company}`,
         html: internalEmailHtml,
         reply: { email: data.email },
       })
     : await mailer.sendMail({
         from: `"${fromName}" <${fromEmail}>`,
-        to: process.env.SUPPORT_EMAIL || "support@autenix.com",
+        to: process.env.SUPPORT_EMAIL || "support@autenix.co",
         subject: `New Demo Request: ${data.firstName} ${data.lastName} from ${data.company}`,
         html: internalEmailHtml,
         replyTo: data.email,
@@ -351,7 +357,7 @@ export async function sendContactFormEmail(data: ContactFormData) {
 
   const recipientEmails: Record<string, string> = {
     sales: "sales@autenix.co",
-    support: process.env.SUPPORT_EMAIL || "support@autenix.com",
+    support: process.env.SUPPORT_EMAIL || "support@autenix.co",
     partnership: "partners@autenix.co",
     other: "info@autenix.co",
   };
@@ -385,11 +391,17 @@ export async function sendContactFormEmail(data: ContactFormData) {
                     <table width="100%" cellpadding="8" cellspacing="0" style="background-color: #fafafa; border-radius: 8px;">
                       <tr>
                         <td style="color: #71717a; width: 140px; font-size: 14px;">Name</td>
-                        <td style="color: #18181b; font-weight: 500; font-size: 14px;">${data.name}</td>
+                        <td style="color: #18181b; font-weight: 500; font-size: 14px;">${
+                          data.name
+                        }</td>
                       </tr>
                       <tr>
                         <td style="color: #71717a; font-size: 14px;">Email</td>
-                        <td style="font-size: 14px;"><a href="mailto:${data.email}" style="color: #0066FF; text-decoration: none;">${data.email}</a></td>
+                        <td style="font-size: 14px;"><a href="mailto:${
+                          data.email
+                        }" style="color: #0066FF; text-decoration: none;">${
+    data.email
+  }</a></td>
                       </tr>
                       ${
                         data.company
@@ -447,7 +459,9 @@ export async function sendContactFormEmail(data: ContactFormData) {
           </tr>
           <tr>
             <td style="padding: 40px 32px;">
-              <h2 style="margin: 0 0 16px 0; font-size: 24px; color: #18181b;">Thank you for contacting us, ${data.name.split(" ")[0]}!</h2>
+              <h2 style="margin: 0 0 16px 0; font-size: 24px; color: #18181b;">Thank you for contacting us, ${
+                data.name.split(" ")[0]
+              }!</h2>
               <p style="color: #52525b; font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;">
                 We've received your message and will get back to you as soon as possible. Our team typically responds within 24 hours.
               </p>
@@ -465,7 +479,7 @@ export async function sendContactFormEmail(data: ContactFormData) {
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="https://autenix.com" style="display: inline-block; background: linear-gradient(135deg, #0066FF 0%, #0052cc 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 14px;">Visit Our Website</a>
+                    <a href="https://autenix.co" style="display: inline-block; background: linear-gradient(135deg, #0066FF 0%, #0052cc 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 14px;">Visit Our Website</a>
                   </td>
                 </tr>
               </table>
@@ -474,9 +488,9 @@ export async function sendContactFormEmail(data: ContactFormData) {
           <tr>
             <td style="background-color: #fafafa; padding: 24px 32px; text-align: center; border-top: 1px solid #e4e4e7;">
               <p style="margin: 0 0 8px 0; color: #71717a; font-size: 13px;">Questions? Contact us at <a href="mailto:${
-                process.env.SUPPORT_EMAIL || "support@autenix.com"
+                process.env.SUPPORT_EMAIL || "support@autenix.co"
               }" style="color: #0066FF; text-decoration: none;">${
-    process.env.SUPPORT_EMAIL || "support@autenix.com"
+    process.env.SUPPORT_EMAIL || "support@autenix.co"
   }</a></p>
               <p style="margin: 0; color: #a1a1aa; font-size: 12px;">© ${new Date().getFullYear()} Autenix. All rights reserved.</p>
             </td>
@@ -493,24 +507,29 @@ export async function sendContactFormEmail(data: ContactFormData) {
     throw new Error("Email mailer not available");
   }
 
-  const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER || "noreply@autenix.com";
+  const fromEmail =
+    process.env.FROM_EMAIL || process.env.SMTP_USER || "noreply@autenix.co";
   const fromName = process.env.FROM_NAME || "Autenix Security";
 
   const isCloudflare = isCloudflareWorkers();
-  
+
   // Send internal notification email
   const internalEmail = isCloudflare
     ? await mailer.send({
         from: { name: fromName, email: fromEmail },
         to: { email: recipientEmail },
-        subject: `New Contact Form: ${subjectLabel} from ${data.name}${data.company ? ` at ${data.company}` : ""}`,
+        subject: `New Contact Form: ${subjectLabel} from ${data.name}${
+          data.company ? ` at ${data.company}` : ""
+        }`,
         html: internalEmailHtml,
         reply: { email: data.email },
       })
     : await mailer.sendMail({
         from: `"${fromName}" <${fromEmail}>`,
         to: recipientEmail,
-        subject: `New Contact Form: ${subjectLabel} from ${data.name}${data.company ? ` at ${data.company}` : ""}`,
+        subject: `New Contact Form: ${subjectLabel} from ${data.name}${
+          data.company ? ` at ${data.company}` : ""
+        }`,
         html: internalEmailHtml,
         replyTo: data.email,
       });

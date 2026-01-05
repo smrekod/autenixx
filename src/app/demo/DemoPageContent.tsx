@@ -114,7 +114,7 @@ export default function DemoPageContent() {
             team will reach out within 24 hours to schedule your personalized
             demo.
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" asChild className="!text-black">
             <Link href="/">Return to Homepage</Link>
           </Button>
         </motion.div>
