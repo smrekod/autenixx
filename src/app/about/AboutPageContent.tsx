@@ -1,30 +1,22 @@
-import type { Metadata } from "next";
-import AboutPageContent from "./AboutPageContent";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About Autenix - Compliance Automation Company",
-  description:
-    "Learn about Autenix, the compliance automation company helping 500+ organizations achieve SOC 2, ISO 27001, HIPAA, and GDPR compliance faster. Our mission is making compliance simple.",
-  keywords: [
-    "about autenix",
-    "compliance automation company",
-    "compliance software company",
-    "GRC platform company",
-  ],
-  openGraph: {
-    title: "About Autenix - Making Compliance Simple",
-    description:
-      "Learn how Autenix helps 500+ companies achieve compliance with 35+ frameworks and 400+ integrations.",
-    url: "https://autenix.co/about",
-  },
-  alternates: {
-    canonical: "https://autenix.co/about",
-  },
-};
-
-export default function AboutPage() {
-  return <AboutPageContent />;
-}
+import Link from "next/link";
+import {
+  ArrowRight,
+  Shield,
+  Target,
+  Heart,
+  Zap,
+  Users,
+  Globe,
+} from "lucide-react";
+import { Button } from "../../components/ui/Button";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "../../components/ui/AnimatedSection";
+import { motion } from "framer-motion";
 
 const values = [
   {
@@ -76,15 +68,16 @@ const colorClasses: Record<
 };
 
 const stats = [
-  { value: "35+", label: "Frameworks Supported" },
-  { value: "400+", label: "Integrations" },
-  { value: "500+", label: "Companies Trust Us" },
-  { value: "24/7", label: "Continuous Monitoring" },
+  { value: "35+", label: "Compliance Frameworks Supported" },
+  { value: "400+", label: "Platform Integrations" },
+  { value: "500+", label: "Companies Trust Autenix" },
+  { value: "24/7", label: "Continuous Compliance Monitoring" },
 ];
 
-export default function AboutPage() {
+export default function AboutPageContent() {
   return (
     <div className="pt-20">
+      {/* Hero Section */}
       <section className="py-8 lg:py-10 hero-gradient-bg relative overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.06, 0.03] }}
@@ -99,7 +92,7 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-surface-900 mb-4 tracking-tight">
-              Making Compliance <span className="gradient-text">Simple</span>
+              About Autenix: Making <span className="gradient-text">Compliance Simple</span>
             </motion.h1>
 
             <motion.p
@@ -107,14 +100,15 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-lg text-surface-600 leading-relaxed">
-              Autenix was founded with a simple mission: to help organizations
-              achieve and maintain compliance without the complexity,
+              Autenix was founded with a clear mission: to help organizations
+              achieve and maintain compliance with <Link href="/frameworks/soc-2" className="text-brand-600 hover:underline">SOC 2</Link>, <Link href="/frameworks/iso-27001" className="text-brand-600 hover:underline">ISO 27001</Link>, <Link href="/frameworks/hipaa" className="text-brand-600 hover:underline">HIPAA</Link>, and 35+ other frameworks—without the complexity,
               spreadsheets, and manual work that typically comes with it.
             </motion.p>
           </AnimatedSection>
         </div>
       </section>
 
+      {/* Stats Section */}
       <section className="py-8 lg:py-10 bg-white border-b border-surface-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StaggerContainer
@@ -136,23 +130,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Mission Section */}
       <section className="py-8 lg:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <AnimatedSection>
               <h2 className="text-2xl sm:text-3xl font-bold text-surface-900 mb-4 tracking-tight">
-                Our Mission
+                Our Mission: Automated Compliance for Every Organization
               </h2>
               <div className="space-y-4 text-base text-surface-600 leading-relaxed">
                 <p>
                   Compliance shouldn&apos;t be a burden. It should be a
                   competitive advantage. We believe that every organization
-                  deserves access to enterprise-grade compliance tools that
+                  deserves access to enterprise-grade <Link href="/products/compliance-automation" className="text-brand-600 hover:underline">compliance automation tools</Link> that
                   actually make their lives easier.
                 </p>
                 <p>
                   Our platform automates the tedious parts of
-                  compliance—evidence collection, control monitoring,
+                  compliance—<Link href="/products/audit-readiness" className="text-brand-600 hover:underline">evidence collection</Link>, <Link href="/products/compliance-automation" className="text-brand-600 hover:underline">control monitoring</Link>,
                   documentation—so you can focus on what matters: building great
                   products and serving your customers.
                 </p>
@@ -184,11 +179,12 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Values Section */}
       <section className="py-8 lg:py-10 bg-surface-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-surface-900 mb-3 tracking-tight">
-              The Principles That Guide Us
+              The Principles That Guide Autenix
             </h2>
             <p className="text-base text-surface-600">
               These values shape everything we do at Autenix
@@ -225,19 +221,20 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* What We Do Section */}
       <section className="py-8 lg:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="max-w-3xl mx-auto">
             <div className="text-center mb-6">
               <h2 className="text-2xl sm:text-3xl font-bold text-surface-900 mb-3 tracking-tight">
-                What We Do
+                What Autenix Does: Compliance Automation Platform
               </h2>
             </div>
             <div className="space-y-4 text-base text-surface-600">
               <p>
-                Autenix is an enterprise compliance platform that helps
+                Autenix is an enterprise <Link href="/products" className="text-brand-600 hover:underline">compliance automation platform</Link> that helps
                 organizations achieve and maintain compliance with frameworks
-                like SOC 2, ISO 27001, HIPAA, PCI-DSS, and many more.
+                like <Link href="/frameworks/soc-2" className="text-brand-600 hover:underline">SOC 2</Link>, <Link href="/frameworks/iso-27001" className="text-brand-600 hover:underline">ISO 27001</Link>, <Link href="/frameworks/hipaa" className="text-brand-600 hover:underline">HIPAA</Link>, <Link href="/frameworks/pci-dss" className="text-brand-600 hover:underline">PCI-DSS</Link>, and many more.
               </p>
               <p>
                 Our platform connects to your cloud infrastructure (AWS, Azure,
@@ -245,18 +242,18 @@ export default function AboutPage() {
                 evidence and monitoring controls in real-time.
               </p>
               <div className="bg-surface-50 rounded-xl p-6 border border-surface-200">
-                <p className="font-medium text-surface-900 mb-4">We provide:</p>
+                <p className="font-medium text-surface-900 mb-4">The Autenix platform provides:</p>
                 <ul className="grid sm:grid-cols-2 gap-3">
                   {[
-                    "Continuous compliance monitoring across 35+ frameworks",
-                    "Automated evidence collection from 400+ integrations",
-                    "Policy generation and management",
-                    "Vendor risk management",
-                    "Audit preparation and readiness",
-                    "Trust center for customer-facing documentation",
+                    { text: "Continuous compliance monitoring across 35+ frameworks", link: "/frameworks" },
+                    { text: "Automated evidence collection from 400+ integrations", link: "/products/audit-readiness" },
+                    { text: "Policy generation and management", link: "/products/policy-generator" },
+                    { text: "Vendor risk management", link: "/products/vendor-risk" },
+                    { text: "Audit preparation and readiness", link: "/products/audit-readiness" },
+                    { text: "Trust center for customer-facing documentation", link: "/products/trust-center" },
                   ].map((item, i) => (
                     <motion.li
-                      key={item}
+                      key={item.text}
                       initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
@@ -265,14 +262,14 @@ export default function AboutPage() {
                       <div className="w-5 h-5 rounded-full bg-brand-100 flex items-center justify-center shrink-0 mt-0.5">
                         <div className="w-2 h-2 rounded-full bg-brand-600" />
                       </div>
-                      <span className="text-sm">{item}</span>
+                      <Link href={item.link} className="text-sm hover:text-brand-600 transition-colors">{item.text}</Link>
                     </motion.li>
                   ))}
                 </ul>
               </div>
               <p>
-                Whether you&apos;re a startup getting your first SOC 2 or an
-                enterprise managing multiple frameworks across business units,
+                Whether you&apos;re a <Link href="/solutions/startup" className="text-brand-600 hover:underline">startup getting your first SOC 2</Link> or an
+                <Link href="/solutions/enterprise" className="text-brand-600 hover:underline"> enterprise managing multiple frameworks</Link> across business units,
                 Autenix scales with your needs.
               </p>
             </div>
@@ -280,6 +277,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* CTA Section */}
       <section className="py-10 lg:py-12 dark-section-gradient relative overflow-hidden">
         <div className="absolute inset-0 cta-pattern opacity-20" />
         <motion.div
@@ -291,11 +289,11 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-              Ready to simplify your compliance?
+              Ready to Simplify Your Compliance?
             </h2>
 
             <p className="text-base text-white mb-6">
-              Join organizations who trust Autenix for their compliance needs.
+              Join 500+ organizations who trust Autenix for automated compliance management.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -304,7 +302,7 @@ export default function AboutPage() {
                 className="bg-white text-surface-900 hover:bg-surface-100 shadow-xl group"
                 asChild>
                 <Link href="/demo">
-                  Request Demo
+                  Request a Demo
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
@@ -322,3 +320,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
