@@ -123,7 +123,7 @@ export default function ContactPageContent() {
           <p className="text-lg text-surface-600 mb-8">
             Thank you for reaching out. Our compliance experts will get back to you within 24 hours.
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" className="bg-white text-black hover:bg-surface-100" asChild>
             <Link href="/">Return to Homepage</Link>
           </Button>
         </motion.div>
@@ -277,7 +277,7 @@ export default function ContactPageContent() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full group shadow-lg shadow-brand-600/20"
+                  className="w-full group bg-white text-black hover:bg-surface-100 shadow-lg shadow-brand-600/20"
                   isLoading={isSubmitting}>
                   Send Message
                   <Send className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -298,7 +298,7 @@ export default function ContactPageContent() {
             <p className="text-surface-600 mb-5">
               See Autenix in action with a personalized walkthrough of our <Link href="/products/compliance-automation" className="text-brand-600 hover:underline">compliance automation</Link> features.
             </p>
-            <Button size="lg" className="group" asChild>
+            <Button size="lg" className="group bg-white text-black hover:bg-surface-100" asChild>
               <Link href="/demo">
                 Request a Demo
                 <motion.span
