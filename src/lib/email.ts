@@ -24,13 +24,30 @@ export interface ContactFormData {
 // Check if we're running in Cloudflare Workers environment
 function isCloudflareWorkers() {
   // Check for Cloudflare-specific globals
+  // Exclude Edge Runtime (which doesn't support cloudflare:sockets)
   try {
-    return (
-      typeof globalThis !== "undefined" &&
-      (globalThis.caches !== undefined ||
-        typeof globalThis.navigator === "undefined" ||
+    // Check if we're in Edge Runtime - Edge Runtime doesn't have process.versions.node
+    // and doesn't support cloudflare:sockets
+    if (
+      typeof process !== "undefined" &&
+      process.versions &&
+      process.versions.node
+    ) {
+      // We have Node.js, so we're not in Edge Runtime
+      // But we might still be in Cloudflare if CF_WORKER is set
+      return !!(
         process.env.CF_PAGES === "1" ||
-        process.env.CF_PAGES_BRANCH)
+        process.env.CF_PAGES_BRANCH ||
+        process.env.CF_WORKER
+      );
+    }
+    // No Node.js - could be Cloudflare Workers or Edge Runtime
+    // Only return true if we have explicit Cloudflare indicators
+    return !!(
+      typeof globalThis !== "undefined" &&
+      (process.env.CF_PAGES === "1" ||
+        process.env.CF_PAGES_BRANCH ||
+        process.env.CF_WORKER)
     );
   } catch {
     return false;
@@ -79,7 +96,7 @@ async function getMailer() {
 
   const isCloudflare = isCloudflareWorkers();
 
-  // Use worker-mailer in Cloudflare Workers
+  // Use worker-mailer in Cloudflare Workers (not Edge Runtime)
   if (isCloudflare) {
     if (!WorkerMailer) {
       try {
@@ -87,23 +104,32 @@ async function getMailer() {
         WorkerMailer = module.WorkerMailer;
       } catch (e) {
         console.error("Failed to load worker-mailer:", e);
-        return null;
+        // Fall back to nodemailer if worker-mailer fails (e.g., in Edge Runtime)
+        console.log("Falling back to nodemailer...");
       }
     }
 
-    return await WorkerMailer.connect({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: process.env.SMTP_PORT === "465",
-      credentials: {
-        username: process.env.SMTP_USER || "",
-        password: process.env.SMTP_PASSWORD || "",
-      },
-      authType: "plain",
-    });
+    // Only use worker-mailer if we successfully loaded it
+    if (WorkerMailer) {
+      try {
+        return await WorkerMailer.connect({
+          host: process.env.SMTP_HOST || "smtp.gmail.com",
+          port: parseInt(process.env.SMTP_PORT || "587"),
+          secure: process.env.SMTP_PORT === "465",
+          credentials: {
+            username: process.env.SMTP_USER || "",
+            password: process.env.SMTP_PASSWORD || "",
+          },
+          authType: "plain",
+        });
+      } catch (e) {
+        console.error("Failed to connect with worker-mailer:", e);
+        // Fall through to nodemailer
+      }
+    }
   }
 
-  // Use nodemailer for local development
+  // Use nodemailer for local development and Edge Runtime fallback
   if (!nodemailer) {
     try {
       nodemailer = await import("nodemailer");
@@ -513,7 +539,7 @@ export async function sendContactFormEmail(data: ContactFormData) {
 
   const isCloudflare = isCloudflareWorkers();
 
-  // Send internal notification email
+  // Send internal notification email - use same pattern as sendDemoRequestEmail
   const internalEmail = isCloudflare
     ? await mailer.send({
         from: { name: fromName, email: fromEmail },
@@ -534,7 +560,7 @@ export async function sendContactFormEmail(data: ContactFormData) {
         replyTo: data.email,
       });
 
-  // Send confirmation email to user
+  // Send confirmation email to user - use same pattern as sendDemoRequestEmail
   const confirmationEmail = isCloudflare
     ? await mailer.send({
         from: { name: fromName, email: fromEmail },

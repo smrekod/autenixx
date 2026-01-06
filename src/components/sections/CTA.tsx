@@ -83,7 +83,7 @@ export function CTA() {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button
               size="lg"
-              className="group bg-white text-surface-900 hover:bg-surface-100 shadow-lg shadow-black/20 hover:shadow-xl"
+              className="group bg-white text-black hover:bg-surface-100 shadow-lg shadow-black/20 hover:shadow-xl"
               asChild>
               <Link href="/demo">
                 Request a Demo
