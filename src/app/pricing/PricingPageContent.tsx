@@ -262,52 +262,6 @@ export default function PricingPageContent() {
         </section>
 
         {/* CTA Card */}
-        <section className="py-8 lg:py-10 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection>
-              <div className="bg-gradient-to-br from-surface-900 via-surface-900 to-surface-800 rounded-2xl p-6 md:p-10 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-900/20 via-transparent to-transparent" />
-                <div className="relative">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                    See Autenix Compliance Platform in Action
-                  </h2>
-                  <p className="text-base text-surface-300 max-w-xl mx-auto mb-6">
-                    Schedule a personalized demo to see how Autenix can
-                    streamline your{" "}
-                    <Link
-                      href="/frameworks/soc-2"
-                      className="text-brand-300 hover:underline">
-                      SOC 2
-                    </Link>
-                    ,{" "}
-                    <Link
-                      href="/frameworks/iso-27001"
-                      className="text-brand-300 hover:underline">
-                      ISO 27001
-                    </Link>
-                    , or{" "}
-                    <Link
-                      href="/frameworks/hipaa"
-                      className="text-brand-300 hover:underline">
-                      HIPAA
-                    </Link>{" "}
-                    compliance journey and get custom pricing for your
-                    organization.
-                  </p>
-                  <Button
-                    size="lg"
-                    className="group shadow-lg shadow-brand-600/25"
-                    asChild>
-                    <Link href="/demo">
-                      Request a Demo
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
 
         {/* FAQ */}
         <section className="py-8 lg:py-10 bg-surface-50">

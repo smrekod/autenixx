@@ -259,6 +259,26 @@ export function Navbar() {
                     </Link>
                   ))}
                 </div>
+                <div>
+                  <div className="text-sm font-medium text-surface-500 px-2 mb-2">
+                    Frameworks
+                  </div>
+                  {NAV_ITEMS.frameworks.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block px-4 py-2 text-surface-700 hover:text-surface-900 hover:bg-surface-50 rounded-lg"
+                      onClick={() => setIsOpen(false)}>
+                      {item.title}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/frameworks"
+                    className="block px-4 py-2 text-brand-600 hover:text-brand-700 hover:bg-surface-50 rounded-lg text-sm font-medium"
+                    onClick={() => setIsOpen(false)}>
+                    View all frameworks →
+                  </Link>
+                </div>
                 <div className="pt-4 border-t border-surface-200 space-y-2">
                   <Link
                     href="/pricing"

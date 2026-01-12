@@ -26,10 +26,13 @@ export async function generateMetadata({
     hipaa: `HIPAA compliance software for healthcare. Automate HIPAA compliance with Autenix - protect PHI, meet security requirements, and prepare for HIPAA audits with continuous monitoring.`,
     "pci-dss": `PCI DSS compliance automation. Achieve PCI DSS certification with Autenix's automated payment security controls, evidence collection, and continuous monitoring for cardholder data protection.`,
     gdpr: `GDPR compliance automation software. Meet GDPR requirements with Autenix - automate data protection controls, privacy compliance monitoring, and documentation for EU regulations.`,
-    nist: `NIST compliance automation platform. Achieve NIST 800-53 compliance with Autenix's automated security controls, continuous monitoring, and federal security standards support.`,
+    nist: `NIST SP 800-53 Rev. 5 compliance automation. Meet federal security requirements with Autenix's automated control assessment, continuous monitoring, and risk-based implementation support for government and regulated organizations.`,
     cis: `CIS Controls compliance software. Implement CIS Benchmarks with Autenix - automate critical security controls, continuous monitoring, and security posture management.`,
     fedramp: `FedRAMP compliance automation. Achieve FedRAMP authorization with Autenix - automate federal cloud security controls, continuous monitoring, and government compliance requirements.`,
     aksk: `AKSK Cybersecurity Framework compliance automation. Achieve compliance with Albania's national cybersecurity framework established by the National Cyber Security Authority (AKSK). Automate risk assessment, incident reporting, and critical infrastructure protection requirements.`,
+    bqk: `BQK Cyber Risk Framework compliance automation. Meet Central Bank of Kosovo regulatory requirements for information systems and cyber risk management. Automate security controls, incident response, and regulatory reporting.`,
+    "bqk-ict": `BQK ICT Security Risk Framework compliance automation. Achieve compliance with Central Bank of Kosovo ICT risk management requirements for financial institutions. Automate ICT governance, security controls, resilience testing, and supervisory reporting.`,
+    nis2: `NIS2 Directive compliance automation. Meet EU cybersecurity requirements for essential and important entities. Automate risk management, incident reporting, supply chain security, and regulatory compliance across critical sectors.`,
   };
 
   return {

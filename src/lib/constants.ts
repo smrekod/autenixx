@@ -73,15 +73,12 @@ export const NAV_ITEMS = {
   frameworks: {
     label: "Frameworks",
     items: [
-      { title: "SOC 2", href: "/frameworks/soc-2" },
       { title: "ISO 27001", href: "/frameworks/iso-27001" },
+      { title: "SOC 2", href: "/frameworks/soc-2" },
       { title: "HIPAA", href: "/frameworks/hipaa" },
-      { title: "PCI-DSS", href: "/frameworks/pci-dss" },
-      { title: "GDPR", href: "/frameworks/gdpr" },
-      { title: "NIST", href: "/frameworks/nist" },
-      { title: "CIS", href: "/frameworks/cis" },
-      { title: "FedRAMP", href: "/frameworks/fedramp" },
       { title: "AKSK", href: "/frameworks/aksk" },
+      { title: "Kosovo AIP", href: "/frameworks/kosovo-aip" },
+      { title: "SAMA ", href: "/frameworks/sama" },
     ],
   },
   resources: {
@@ -137,28 +134,13 @@ export const FRAMEWORKS = [
     color: "purple",
   },
   {
-    name: "NIST 800-53",
+    name: "NIST SP 800-53 Rev. 5",
     shortName: "NIST",
     slug: "nist",
-    description: "NIST Security and Privacy Controls",
+    description:
+      "Comprehensive catalog of security and privacy controls for federal information systems and organizations, providing a risk-based approach to cybersecurity",
     category: "Government",
     color: "red",
-  },
-  {
-    name: "CIS Benchmarks",
-    shortName: "CIS",
-    slug: "cis",
-    description: "Center for Internet Security Benchmarks",
-    category: "Security",
-    color: "cyan",
-  },
-  {
-    name: "FedRAMP",
-    shortName: "FedRAMP",
-    slug: "fedramp",
-    description: "Federal Risk and Authorization Management Program",
-    category: "Government",
-    color: "blue",
   },
   {
     name: "AKSK Cybersecurity Framework",
@@ -168,6 +150,69 @@ export const FRAMEWORKS = [
       "National Cybersecurity Framework established by the National Cyber Security Authority of Albania",
     category: "Government",
     color: "cyan",
+  },
+  {
+    name: "BQK Cyber Risk Framework",
+    shortName: "BQK",
+    slug: "bqk",
+    description:
+      "Information Systems and Cyber Risk Management Regulation by the Central Bank of Kosovo",
+    category: "Government",
+    color: "indigo",
+  },
+  {
+    name: "BQK ICT Security Risk Framework",
+    shortName: "BQK ICT",
+    slug: "bqk-ict",
+    description:
+      "ICT Security Risk Management Framework for financial institutions regulated by the Central Bank of Kosovo",
+    category: "Government",
+    color: "violet",
+  },
+  {
+    name: "BQK Outsourcing Framework",
+    shortName: "BQK Outsourcing",
+    slug: "bqk-outsourcing",
+    description:
+      "Supervisory framework for managing outsourcing and third-party risk in financial institutions under Central Bank of Kosovo oversight",
+    category: "Government",
+    color: "teal",
+  },
+  {
+    name: "Kosovo Cybersecurity Framework",
+    shortName: "Kosovo Cyber Framework",
+    slug: "kosovo-cyber",
+    description:
+      "National cybersecurity framework establishing governance, risk management, and resilience requirements for critical infrastructure and essential services in Kosovo",
+    category: "Government",
+    color: "slate",
+  },
+  {
+    name: "Kosovo AIP Framework (Law 06/L-082)",
+    shortName: "Kosovo AIP",
+    slug: "kosovo-aip",
+    description:
+      "Advanced Infrastructure Protection framework regulating security requirements for critical information infrastructure, digital services, and data processing systems in Kosovo",
+    category: "Government",
+    color: "emerald",
+  },
+  {
+    name: "NIS2 Directive",
+    shortName: "NIS2",
+    slug: "nis2",
+    description:
+      "European Union directive establishing comprehensive cybersecurity requirements for essential and important entities across critical sectors",
+    category: "Government",
+    color: "blue",
+  },
+  {
+    name: "SAMA Cyber Security Framework",
+    shortName: "SAMA",
+    slug: "sama",
+    description:
+      "Saudi Central Bank Cyber Security Framework establishing comprehensive cybersecurity requirements for financial institutions operating in Saudi Arabia",
+    category: "Government",
+    color: "orange",
   },
 ];
 

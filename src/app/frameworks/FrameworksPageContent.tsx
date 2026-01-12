@@ -65,6 +65,24 @@ const colorMap: Record<
     border: "border-cyan-200",
     hover: "hover:bg-cyan-100",
   },
+  violet: {
+    bg: "bg-violet-50",
+    text: "text-violet-700",
+    border: "border-violet-200",
+    hover: "hover:bg-violet-100",
+  },
+  teal: {
+    bg: "bg-teal-50",
+    text: "text-teal-700",
+    border: "border-teal-200",
+    hover: "hover:bg-teal-100",
+  },
+  slate: {
+    bg: "bg-slate-50",
+    text: "text-slate-700",
+    border: "border-slate-200",
+    hover: "hover:bg-slate-100",
+  },
 };
 
 const frameworkIcons: Record<string, React.ElementType> = {
@@ -74,15 +92,20 @@ const frameworkIcons: Record<string, React.ElementType> = {
   "pci-dss": Lock,
   gdpr: Globe,
   nist: Building,
-  cis: Shield,
-  fedramp: Building,
   aksk: Building,
+  bqk: Building,
+  "bqk-ict": Building,
+  "bqk-outsourcing": Building,
+  "kosovo-cyber": Shield,
+  "kosovo-aip": Shield,
+  nis2: Shield,
+  sama: Building,
 };
 
 const categories = [
   {
     name: "Security Frameworks",
-    frameworks: ["SOC 2", "ISO 27001", "CIS"],
+    frameworks: ["SOC 2", "ISO 27001"],
     icon: Shield,
   },
   { name: "Healthcare Compliance", frameworks: ["HIPAA"], icon: FileCheck },
@@ -90,7 +113,17 @@ const categories = [
   { name: "Privacy Regulations", frameworks: ["GDPR"], icon: Globe },
   {
     name: "Government Standards",
-    frameworks: ["NIST", "FedRAMP", "AKSK"],
+    frameworks: [
+      "NIST",
+      "AKSK",
+      "BQK",
+      "BQK ICT",
+      "BQK Outsourcing",
+      "Kosovo Cyber Framework",
+      "Kosovo AIP",
+      "NIS2",
+      "SAMA",
+    ],
     icon: Building,
   },
 ];
@@ -251,11 +284,7 @@ export default function FrameworksPageContent() {
             <h2 className="text-2xl font-bold text-surface-900 mb-3">
               Additional Compliance Frameworks We Support
             </h2>
-            <p className="text-base text-surface-600 mb-6 max-w-2xl mx-auto">
-              Beyond our core frameworks, Autenix also supports CMMC, CJIS,
-              NIS2, DORA, CPS 234, EU AI Act, Essential Eight, Cyber Essentials,
-              and custom compliance frameworks.
-            </p>
+
             <Button
               size="lg"
               variant="outline"

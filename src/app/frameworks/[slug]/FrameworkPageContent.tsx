@@ -73,6 +73,27 @@ const colorMap: Record<
     border: "border-cyan-200",
     gradient: "from-cyan-500 to-cyan-600",
   },
+  violet: {
+    bg: "bg-violet-600",
+    text: "text-violet-600",
+    light: "bg-violet-50",
+    border: "border-violet-200",
+    gradient: "from-violet-500 to-violet-600",
+  },
+  teal: {
+    bg: "bg-teal-600",
+    text: "text-teal-600",
+    light: "bg-teal-50",
+    border: "border-teal-200",
+    gradient: "from-teal-500 to-teal-600",
+  },
+  slate: {
+    bg: "bg-slate-600",
+    text: "text-slate-600",
+    light: "bg-slate-50",
+    border: "border-slate-200",
+    gradient: "from-slate-500 to-slate-600",
+  },
 };
 
 const frameworkIcons: Record<string, React.ElementType> = {
@@ -82,9 +103,14 @@ const frameworkIcons: Record<string, React.ElementType> = {
   "pci-dss": Lock,
   gdpr: Globe,
   nist: Building,
-  cis: Shield,
-  fedramp: Building,
   aksk: Building,
+  bqk: Building,
+  "bqk-ict": Building,
+  "bqk-outsourcing": Building,
+  "kosovo-cyber": Shield,
+  "kosovo-aip": Shield,
+  nis2: Shield,
+  sama: Building,
 };
 
 const frameworkDetails: Record<
@@ -148,34 +174,14 @@ const frameworkDetails: Record<
   },
   nist: {
     benefits: [
-      "Implement comprehensive security framework",
-      "Enable risk-based security approach",
-      "Flexible implementation options",
-      "Qualify for government contracts",
-      "Align with industry best practices",
+      "Meet federal security requirements and qualify for government contracts",
+      "Implement risk-based security controls tailored to organizational needs",
+      "Strengthen governance, accountability, and executive oversight",
+      "Achieve FISMA and CMMC compliance requirements",
+      "Align with international standards including ISO 27001",
     ],
     controls:
-      "Security and Privacy controls organized by families (Access Control, Audit, etc.)",
-  },
-  cis: {
-    benefits: [
-      "Implement prioritized security controls",
-      "Defend against common cyber attacks",
-      "Follow clear implementation guidance",
-      "Measure security posture improvement",
-      "Leverage community-driven standards",
-    ],
-    controls: "Critical Security Controls prioritized by implementation groups",
-  },
-  fedramp: {
-    benefits: [
-      "Sell cloud services to federal agencies",
-      "Obtain standardized authorization",
-      "Meet continuous monitoring requirements",
-      "Access trusted government marketplace",
-      "Leverage reusable security package",
-    ],
-    controls: "Based on NIST 800-53 with additional federal requirements",
+      "20 control families covering access control, incident response, risk assessment, system integrity, supply chain security, and privacy controls — with baseline tailoring for Low, Moderate, and High impact systems",
   },
   aksk: {
     benefits: [
@@ -187,6 +193,83 @@ const frameworkDetails: Record<
     ],
     controls:
       "National cybersecurity measures, risk assessment methodologies, incident reporting, and critical infrastructure protection requirements",
+  },
+  bqk: {
+    benefits: [
+      "Meet Central Bank of Kosovo regulatory requirements",
+      "Enhance digital security and operational resilience",
+      "Protect financial sector technological infrastructure",
+      "Align with international standards (Basel, DORA, NIS2, NIST)",
+      "Build trust with regulators and financial stakeholders",
+    ],
+    controls:
+      "Information systems governance, cyber risk management, incident response, business continuity, and technology risk controls aligned with Basel, ECB, DORA, NIS2, and NIST frameworks",
+  },
+  "bqk-ict": {
+    benefits: [
+      "Comply with BQK supervisory expectations for ICT risk management",
+      "Strengthen operational resilience and business continuity",
+      "Protect critical ICT systems and customer data",
+      "Demonstrate governance accountability to regulators",
+      "Align with DORA, NIS2, and international best practices",
+    ],
+    controls:
+      "ICT governance, risk assessment, security controls, incident management, third-party risk, resilience testing, and supervisory reporting requirements",
+  },
+  "bqk-outsourcing": {
+    benefits: [
+      "Meet BQK regulatory expectations for outsourcing governance",
+      "Manage third-party and concentration risk systematically",
+      "Maintain operational control over outsourced functions",
+      "Ensure regulatory compliance throughout vendor lifecycle",
+      "Protect data security and business continuity in outsourcing arrangements",
+    ],
+    controls:
+      "Outsourcing governance framework, vendor due diligence, contractual requirements, ongoing monitoring, exit strategies, and regulatory reporting obligations for financial institutions",
+  },
+  "kosovo-cyber": {
+    benefits: [
+      "Comply with national cybersecurity requirements for critical infrastructure",
+      "Strengthen operational resilience and incident response capabilities",
+      "Meet regulatory obligations for essential service providers",
+      "Align with EU directives and international security standards",
+      "Protect national digital infrastructure and public trust",
+    ],
+    controls:
+      "National cybersecurity governance, risk assessment methodologies, incident detection and reporting, critical infrastructure protection, supply chain security, and continuous monitoring requirements",
+  },
+  "kosovo-aip": {
+    benefits: [
+      "Comply with Kosovo AIP (Law 06/L-082) regulatory requirements",
+      "Protect critical information infrastructure and digital services",
+      "Meet legal obligations for data processing systems and essential services",
+      "Strengthen governance and risk management for regulated entities",
+      "Align with EU standards and international cybersecurity best practices",
+    ],
+    controls:
+      "Advanced Infrastructure Protection requirements covering critical information infrastructure security, digital service protection, data processing system controls, incident reporting, and regulatory compliance obligations under Law 06/L-082",
+  },
+  nis2: {
+    benefits: [
+      "Comply with EU-wide cybersecurity requirements for essential and important entities",
+      "Strengthen operational resilience and incident response capabilities",
+      "Meet mandatory security measures across supply chain and third-party relationships",
+      "Avoid significant penalties for non-compliance (up to €10M or 2% of global turnover)",
+      "Demonstrate cybersecurity maturity to regulators, customers, and partners",
+    ],
+    controls:
+      "Risk management measures, corporate accountability, business continuity, supply chain security, incident handling, network security, access control, encryption, and vulnerability management requirements",
+  },
+  sama: {
+    benefits: [
+      "Meet Saudi Central Bank regulatory requirements for financial institutions",
+      "Protect critical financial infrastructure and customer data from cyber threats",
+      "Demonstrate compliance with mandatory cybersecurity controls to regulators",
+      "Avoid regulatory penalties and maintain operational authorization in Saudi Arabia",
+      "Align with international standards including NIST, ISO 27001, and Basel Committee guidelines",
+    ],
+    controls:
+      "Cybersecurity governance, risk management framework, asset management, access controls, cryptography, physical security, operations security, network security, system acquisition and development, vendor management, incident management, business continuity, and regulatory reporting requirements",
   },
 };
 
@@ -295,7 +378,11 @@ export default function FrameworkPageContent({
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className={`text-7xl font-bold ${colors.text} mb-3`}>
+                    className={`${
+                      slug === "kosovo-aip" || slug === "bqk-outsourcing"
+                        ? "text-5xl"
+                        : "text-7xl"
+                    } font-bold ${colors.text} mb-3`}>
                     {framework.shortName}
                   </motion.div>
                   <div className="text-surface-600 font-medium">
