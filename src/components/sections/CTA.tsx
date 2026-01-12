@@ -123,34 +123,6 @@ export function CTA() {
             ))}
           </motion.div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto text-white">
-          {[
-            { value: "35+", label: "Frameworks" },
-            { value: "400+", label: "Integrations" },
-            { value: "94%", label: "Faster Audits" },
-            { value: "24/7", label: "Monitoring" },
-          ].map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 + i * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
-              className="text-center p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all">
-              <div className="text-2xl font-bold text-white mb-0.5">
-                {stat.value}
-              </div>
-              <div className="text-xs text-surface-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

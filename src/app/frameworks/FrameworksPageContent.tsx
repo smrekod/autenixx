@@ -76,14 +76,23 @@ const frameworkIcons: Record<string, React.ElementType> = {
   nist: Building,
   cis: Shield,
   fedramp: Building,
+  aksk: Building,
 };
 
 const categories = [
-  { name: "Security Frameworks", frameworks: ["SOC 2", "ISO 27001", "CIS"], icon: Shield },
+  {
+    name: "Security Frameworks",
+    frameworks: ["SOC 2", "ISO 27001", "CIS"],
+    icon: Shield,
+  },
   { name: "Healthcare Compliance", frameworks: ["HIPAA"], icon: FileCheck },
   { name: "Financial Security", frameworks: ["PCI-DSS"], icon: Lock },
   { name: "Privacy Regulations", frameworks: ["GDPR"], icon: Globe },
-  { name: "Government Standards", frameworks: ["NIST", "FedRAMP"], icon: Building },
+  {
+    name: "Government Standards",
+    frameworks: ["NIST", "FedRAMP", "AKSK"],
+    icon: Building,
+  },
 ];
 
 export default function FrameworksPageContent() {
@@ -105,7 +114,8 @@ export default function FrameworksPageContent() {
               transition={{ delay: 0.1 }}
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-surface-900 mb-4 tracking-tight">
               Compliance{" "}
-              <span className="gradient-text-emerald">Frameworks</span> We Automate
+              <span className="gradient-text-emerald">Frameworks</span> We
+              Automate
             </motion.h1>
 
             <motion.p
@@ -113,12 +123,33 @@ export default function FrameworksPageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-lg text-surface-600 mb-6 leading-relaxed">
-              Autenix provides comprehensive support for 35+ major compliance frameworks including{" "}
-              <Link href="/frameworks/soc-2" className="text-emerald-600 hover:underline">SOC 2</Link>,{" "}
-              <Link href="/frameworks/iso-27001" className="text-emerald-600 hover:underline">ISO 27001</Link>,{" "}
-              <Link href="/frameworks/hipaa" className="text-emerald-600 hover:underline">HIPAA</Link>,{" "}
-              <Link href="/frameworks/gdpr" className="text-emerald-600 hover:underline">GDPR</Link>, and more.
-              Automated control mapping, continuous monitoring, and audit-ready evidence collection.
+              Autenix provides comprehensive support for 35+ major compliance
+              frameworks including{" "}
+              <Link
+                href="/frameworks/soc-2"
+                className="text-emerald-600 hover:underline">
+                SOC 2
+              </Link>
+              ,{" "}
+              <Link
+                href="/frameworks/iso-27001"
+                className="text-emerald-600 hover:underline">
+                ISO 27001
+              </Link>
+              ,{" "}
+              <Link
+                href="/frameworks/hipaa"
+                className="text-emerald-600 hover:underline">
+                HIPAA
+              </Link>
+              ,{" "}
+              <Link
+                href="/frameworks/gdpr"
+                className="text-emerald-600 hover:underline">
+                GDPR
+              </Link>
+              , and more. Automated control mapping, continuous monitoring, and
+              audit-ready evidence collection.
             </motion.p>
 
             <motion.div
@@ -195,7 +226,8 @@ export default function FrameworksPageContent() {
                             </div>
                           </div>
                           <p className="text-surface-600 mb-4 text-sm leading-relaxed">
-                            {framework.description}. Automate your {framework.shortName} compliance with Autenix.
+                            {framework.description}. Automate your{" "}
+                            {framework.shortName} compliance with Autenix.
                           </p>
                           <span className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 group-hover:gap-2.5 transition-all">
                             Learn about {framework.shortName} automation
@@ -220,8 +252,9 @@ export default function FrameworksPageContent() {
               Additional Compliance Frameworks We Support
             </h2>
             <p className="text-base text-surface-600 mb-6 max-w-2xl mx-auto">
-              Beyond our core frameworks, Autenix also supports CMMC, CJIS, NIS2, DORA, CPS 234, EU AI Act,
-              Essential Eight, Cyber Essentials, and custom compliance frameworks.
+              Beyond our core frameworks, Autenix also supports CMMC, CJIS,
+              NIS2, DORA, CPS 234, EU AI Act, Essential Eight, Cyber Essentials,
+              and custom compliance frameworks.
             </p>
             <Button
               size="lg"
@@ -254,9 +287,24 @@ export default function FrameworksPageContent() {
 
             <p className="text-base text-white mb-6">
               See how Autenix can help you achieve{" "}
-              <Link href="/frameworks/soc-2" className="text-emerald-300 hover:underline">SOC 2</Link>,{" "}
-              <Link href="/frameworks/iso-27001" className="text-emerald-300 hover:underline">ISO 27001</Link>,{" "}
-              <Link href="/frameworks/hipaa" className="text-emerald-300 hover:underline">HIPAA</Link>, and other compliance requirements faster.
+              <Link
+                href="/frameworks/soc-2"
+                className="text-emerald-300 hover:underline">
+                SOC 2
+              </Link>
+              ,{" "}
+              <Link
+                href="/frameworks/iso-27001"
+                className="text-emerald-300 hover:underline">
+                ISO 27001
+              </Link>
+              ,{" "}
+              <Link
+                href="/frameworks/hipaa"
+                className="text-emerald-300 hover:underline">
+                HIPAA
+              </Link>
+              , and other compliance requirements faster.
             </p>
 
             <Button
@@ -274,4 +322,3 @@ export default function FrameworksPageContent() {
     </div>
   );
 }
-

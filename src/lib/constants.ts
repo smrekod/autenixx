@@ -81,6 +81,7 @@ export const NAV_ITEMS = {
       { title: "NIST", href: "/frameworks/nist" },
       { title: "CIS", href: "/frameworks/cis" },
       { title: "FedRAMP", href: "/frameworks/fedramp" },
+      { title: "AKSK", href: "/frameworks/aksk" },
     ],
   },
   resources: {
@@ -158,6 +159,15 @@ export const FRAMEWORKS = [
     description: "Federal Risk and Authorization Management Program",
     category: "Government",
     color: "blue",
+  },
+  {
+    name: "AKSK Cybersecurity Framework",
+    shortName: "AKSK",
+    slug: "aksk",
+    description:
+      "National Cybersecurity Framework established by the National Cyber Security Authority of Albania",
+    category: "Government",
+    color: "cyan",
   },
 ];
 

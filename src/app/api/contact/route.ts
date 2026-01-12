@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendContactFormEmail, ContactFormData } from "../../../lib/email";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    const { name, email, company, subject, message } = body;
+    const { name, lastName, email, company, subject, message } = body;
 
-    if (!name || !email || !subject || !message) {
+    if (!name || !lastName || !email || !subject || !message) {
       return NextResponse.json(
         {
           error:
-            "Missing required fields: name, email, subject, and message are required",
+            "Missing required fields: name, last name, email, subject, and message are required",
         },
         { status: 400 }
       );
@@ -30,6 +30,7 @@ export async function POST(request: NextRequest) {
     if (process.env.EMAIL_ENABLED !== "true") {
       console.log("Email disabled - Contact form submission received:", {
         name,
+        lastName,
         email,
         company,
         subject,
@@ -42,6 +43,7 @@ export async function POST(request: NextRequest) {
 
     const contactData: ContactFormData = {
       name: name.trim(),
+      lastName: lastName.trim(),
       email: email.trim().toLowerCase(),
       company: company?.trim(),
       subject: subject.trim(),
@@ -63,6 +65,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-
-

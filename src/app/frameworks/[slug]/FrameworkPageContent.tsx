@@ -84,6 +84,7 @@ const frameworkIcons: Record<string, React.ElementType> = {
   nist: Building,
   cis: Shield,
   fedramp: Building,
+  aksk: Building,
 };
 
 const frameworkDetails: Record<
@@ -176,13 +177,26 @@ const frameworkDetails: Record<
     ],
     controls: "Based on NIST 800-53 with additional federal requirements",
   },
+  aksk: {
+    benefits: [
+      "Comply with Albanian national cybersecurity requirements",
+      "Protect critical and important information infrastructures",
+      "Meet legal obligations under Law No. 25/2024",
+      "Align with EU directives (NIS2, eIDAS2)",
+      "Demonstrate commitment to national security standards",
+    ],
+    controls:
+      "National cybersecurity measures, risk assessment methodologies, incident reporting, and critical infrastructure protection requirements",
+  },
 };
 
 interface FrameworkPageContentProps {
   slug: string;
 }
 
-export default function FrameworkPageContent({ slug }: FrameworkPageContentProps) {
+export default function FrameworkPageContent({
+  slug,
+}: FrameworkPageContentProps) {
   const framework = FRAMEWORKS.find((f) => f.slug === slug);
 
   if (!framework) {
@@ -220,7 +234,8 @@ export default function FrameworkPageContent({ slug }: FrameworkPageContentProps
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
                 className="text-4xl sm:text-5xl font-bold text-surface-900 mb-6 tracking-tight">
-                {framework.name} <span className={colors.text}>Compliance Automation</span>
+                {framework.name}{" "}
+                <span className={colors.text}>Compliance Automation</span>
               </motion.h1>
 
               <motion.p
@@ -230,8 +245,18 @@ export default function FrameworkPageContent({ slug }: FrameworkPageContentProps
                 className="text-lg text-surface-600 mb-8 leading-relaxed">
                 {framework.description}. Autenix helps you achieve and maintain{" "}
                 {framework.shortName} compliance with{" "}
-                <Link href="/products/compliance-automation" className="text-brand-600 hover:underline">automated monitoring</Link> and{" "}
-                <Link href="/products/audit-readiness" className="text-brand-600 hover:underline">evidence collection</Link>.
+                <Link
+                  href="/products/compliance-automation"
+                  className="text-brand-600 hover:underline">
+                  automated monitoring
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/products/audit-readiness"
+                  className="text-brand-600 hover:underline">
+                  evidence collection
+                </Link>
+                .
               </motion.p>
 
               <motion.div
@@ -329,8 +354,14 @@ export default function FrameworkPageContent({ slug }: FrameworkPageContentProps
                 How Autenix Automates {framework.shortName} Compliance
               </h2>
               <p className="text-lg text-surface-600 mb-8">
-                Our <Link href="/products/compliance-automation" className="text-brand-600 hover:underline">compliance automation platform</Link> handles the tedious parts of {framework.shortName} compliance so you
-                can focus on your business.
+                Our{" "}
+                <Link
+                  href="/products/compliance-automation"
+                  className="text-brand-600 hover:underline">
+                  compliance automation platform
+                </Link>{" "}
+                handles the tedious parts of {framework.shortName} compliance so
+                you can focus on your business.
               </p>
               <ul className="space-y-4">
                 {[
@@ -456,8 +487,14 @@ export default function FrameworkPageContent({ slug }: FrameworkPageContentProps
             </h2>
 
             <p className="text-lg text-white mb-8">
-              See how Autenix can help you get {framework.shortName} compliant faster with{" "}
-              <Link href="/products/compliance-automation" className="text-brand-300 hover:underline">automation</Link>.
+              See how Autenix can help you get {framework.shortName} compliant
+              faster with{" "}
+              <Link
+                href="/products/compliance-automation"
+                className="text-brand-300 hover:underline">
+                automation
+              </Link>
+              .
             </p>
 
             <Button
@@ -475,4 +512,3 @@ export default function FrameworkPageContent({ slug }: FrameworkPageContentProps
     </div>
   );
 }
-

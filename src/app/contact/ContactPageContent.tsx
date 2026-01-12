@@ -63,6 +63,7 @@ const colorClasses: Record<
 export default function ContactPageContent() {
   const [formData, setFormData] = useState({
     name: "",
+    lastName: "",
     email: "",
     company: "",
     subject: "",
@@ -121,9 +122,13 @@ export default function ContactPageContent() {
             Message Sent!
           </h1>
           <p className="text-lg text-surface-600 mb-8">
-            Thank you for reaching out. Our compliance experts will get back to you within 24 hours.
+            Thank you for reaching out. Our compliance experts will get back to
+            you within 24 hours.
           </p>
-          <Button size="lg" className="bg-white text-black hover:bg-surface-100" asChild>
+          <Button
+            size="lg"
+            className="bg-white text-black hover:bg-surface-100"
+            asChild>
             <Link href="/">Return to Homepage</Link>
           </Button>
         </motion.div>
@@ -148,7 +153,8 @@ export default function ContactPageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-3xl sm:text-4xl font-bold text-surface-900 mb-4 tracking-tight">
-              Contact Autenix <span className="gradient-text">Compliance Experts</span>
+              Contact Autenix{" "}
+              <span className="gradient-text">Compliance Experts</span>
             </motion.h1>
 
             <motion.p
@@ -156,7 +162,23 @@ export default function ContactPageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-lg text-surface-600">
-              Have questions about <Link href="/frameworks/soc-2" className="text-brand-600 hover:underline">SOC 2</Link>, <Link href="/frameworks/iso-27001" className="text-brand-600 hover:underline">ISO 27001</Link>, or our <Link href="/products" className="text-brand-600 hover:underline">compliance automation platform</Link>? Our team is here to help you achieve compliance faster.
+              Have questions about{" "}
+              <Link
+                href="/frameworks/soc-2"
+                className="text-brand-600 hover:underline">
+                SOC 2
+              </Link>
+              ,{" "}
+              <Link
+                href="/frameworks/iso-27001"
+                className="text-brand-600 hover:underline">
+                ISO 27001
+              </Link>
+              , or our{" "}
+              <Link href="/products" className="text-brand-600 hover:underline">
+                compliance automation platform
+              </Link>
+              ? Our team is here to help you achieve compliance faster.
             </motion.p>
           </AnimatedSection>
         </div>
@@ -235,6 +257,15 @@ export default function ContactPageContent() {
                   />
                 </div>
                 <Input
+                  label="Last Name"
+                  placeholder="Your last name"
+                  value={formData.lastName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lastName: e.target.value })
+                  }
+                  required
+                />
+                <Input
                   label="Company"
                   placeholder="Your company"
                   value={formData.company}
@@ -254,7 +285,9 @@ export default function ContactPageContent() {
                     }
                     required>
                     <option value="">Select a subject...</option>
-                    <option value="sales">Sales Inquiry - Compliance Platform</option>
+                    <option value="sales">
+                      Sales Inquiry - Compliance Platform
+                    </option>
                     <option value="support">Support Question</option>
                     <option value="partnership">Partnership Opportunity</option>
                     <option value="other">Other</option>
@@ -296,9 +329,18 @@ export default function ContactPageContent() {
               Prefer a Live Demo of Our Compliance Platform?
             </h2>
             <p className="text-surface-600 mb-5">
-              See Autenix in action with a personalized walkthrough of our <Link href="/products/compliance-automation" className="text-brand-600 hover:underline">compliance automation</Link> features.
+              See Autenix in action with a personalized walkthrough of our{" "}
+              <Link
+                href="/products/compliance-automation"
+                className="text-brand-600 hover:underline">
+                compliance automation
+              </Link>{" "}
+              features.
             </p>
-            <Button size="lg" className="group bg-white text-black hover:bg-surface-100" asChild>
+            <Button
+              size="lg"
+              className="group bg-white text-black hover:bg-surface-100"
+              asChild>
               <Link href="/demo">
                 Request a Demo
                 <motion.span
@@ -315,4 +357,3 @@ export default function ContactPageContent() {
     </div>
   );
 }
-

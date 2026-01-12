@@ -194,6 +194,12 @@ export function Navbar() {
               className="px-4 py-2 text-surface-700 hover:text-surface-900 transition-colors">
               Pricing
             </Link>
+
+            <Link
+              href="/compare"
+              className="px-4 py-2 text-surface-700 hover:text-surface-900 transition-colors">
+              Compare
+            </Link>
           </div>
 
           {/* Desktop CTA */}
@@ -204,7 +210,7 @@ export function Navbar() {
               Log in
             </Link> */}
             <Button className="text-black" asChild>
-              <Link href="/demo">Request Demo</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
 
@@ -254,6 +260,18 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="pt-4 border-t border-surface-200 space-y-2">
+                  <Link
+                    href="/pricing"
+                    className="block px-4 py-2 text-surface-700 hover:text-surface-900 hover:bg-surface-50 rounded-lg"
+                    onClick={() => setIsOpen(false)}>
+                    Pricing
+                  </Link>
+                  <Link
+                    href="/compare"
+                    className="block px-4 py-2 text-surface-700 hover:text-surface-900 hover:bg-surface-50 rounded-lg"
+                    onClick={() => setIsOpen(false)}>
+                    Compare
+                  </Link>
                   {/* <Link
                     href="/login"
                     className="block px-4 py-2 text-surface-700 hover:text-surface-900"
@@ -261,8 +279,8 @@ export function Navbar() {
                     Log in
                   </Link> */}
                   <Button className="w-full text-black" asChild>
-                    <Link href="/demo" onClick={() => setIsOpen(false)}>
-                      Request Demo
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                      Contact Us
                     </Link>
                   </Button>
                 </div>

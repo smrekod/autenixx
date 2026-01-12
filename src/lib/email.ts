@@ -15,6 +15,7 @@ export interface DemoRequestData {
 
 export interface ContactFormData {
   name: string;
+  lastName: string;
   email: string;
   company?: string;
   subject: string;
@@ -419,7 +420,7 @@ export async function sendContactFormEmail(data: ContactFormData) {
                         <td style="color: #71717a; width: 140px; font-size: 14px;">Name</td>
                         <td style="color: #18181b; font-weight: 500; font-size: 14px;">${
                           data.name
-                        }</td>
+                        } ${data.lastName}</td>
                       </tr>
                       <tr>
                         <td style="color: #71717a; font-size: 14px;">Email</td>
@@ -486,7 +487,7 @@ export async function sendContactFormEmail(data: ContactFormData) {
           <tr>
             <td style="padding: 40px 32px;">
               <h2 style="margin: 0 0 16px 0; font-size: 24px; color: #18181b;">Thank you for contacting us, ${
-                data.name.split(" ")[0]
+                data.name
               }!</h2>
               <p style="color: #52525b; font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;">
                 We've received your message and will get back to you as soon as possible. Our team typically responds within 24 hours.
