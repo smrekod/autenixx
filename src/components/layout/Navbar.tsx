@@ -195,11 +195,11 @@ export function Navbar() {
               Pricing
             </Link>
 
-            <Link
+            {/* <Link
               href="/compare"
               className="px-4 py-2 text-surface-700 hover:text-surface-900 transition-colors">
               Compare
-            </Link>
+            </Link> */}
           </div>
 
           {/* Desktop CTA */}
@@ -286,12 +286,12 @@ export function Navbar() {
                     onClick={() => setIsOpen(false)}>
                     Pricing
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/compare"
                     className="block px-4 py-2 text-surface-700 hover:text-surface-900 hover:bg-surface-50 rounded-lg"
                     onClick={() => setIsOpen(false)}>
                     Compare
-                  </Link>
+                  </Link> */}
                   {/* <Link
                     href="/login"
                     className="block px-4 py-2 text-surface-700 hover:text-surface-900"
