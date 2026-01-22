@@ -1,0 +1,32 @@
+# robots.txt for autenix.co
+# Allow all major search engine crawlers
+
+User-agent: *
+Allow: /
+
+# Disallow internal application routes
+Disallow: /dashboard
+Disallow: /app
+Disallow: /auth
+Disallow: /login
+Disallow: /register
+Disallow: /signup
+Disallow: /reset-password
+Disallow: /verify-email
+
+# Disallow API routes
+Disallow: /api/
+
+# Allow crawling of public assets
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
+
+# Sitemap location
+Sitemap: https://autenix.co/sitemap.xml
